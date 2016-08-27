@@ -63,4 +63,24 @@ extension TwitterJSON {
         }
     }
     
+    public class func searchForTweetsForUser(user: String, completion: (tweets: [TJTweet]) -> Void) {
+        let apiURL = "https://api.twitter.com/1.1/statuses/user_timeline.json"
+        let parameters = [
+            "screen_name" : user,
+            "count": "\(TwitterJSON.numberOfResults)"
+        ]
+        TwitterJSON.makeRequest(.GET, parameters: parameters, apiURL: apiURL) { success, json in
+            var tweets = [TJTweet]()
+            for item in json["statuses"] {
+                let tweet = TJTweet(tweetInfo: item.1)
+                tweets.append(tweet)
+            }
+            TwitterJSON.loadImages(tweets, users: nil, completion: { (tweets, users) -> Void in
+                dispatch_async(dispatch_get_main_queue(),{
+                    completion(tweets: tweets!)
+                })
+            })
+        }
+    }
+    
 }
