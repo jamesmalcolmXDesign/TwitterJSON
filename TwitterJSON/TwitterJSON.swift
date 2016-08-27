@@ -74,7 +74,7 @@ public class TwitterJSON {
                     for account in accounts {
                         let alertAction = UIAlertAction(title: account.username, style: .Default) { (alertAction: UIAlertAction!) -> Void in
                             completionHandler(account: account)
-                            println("test")
+                            print("test")
                         }
                         alertController.addAction(alertAction)
                     }
