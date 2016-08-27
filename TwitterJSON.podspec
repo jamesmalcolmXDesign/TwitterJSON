@@ -14,8 +14,8 @@ s.homepage = "https://github.com/KyleGoslan/TwitterJSON"
 s.source = { :git => "https://github.com/KyleGoslan/TwitterJSON.git", :tag => "#{s.version}"}
 
 s.frameworks = "Foundation", "UIKit"
-s.dependency 'Alamofire', '~> 1.3'
-s.dependency 'SwiftyJSON', '~> 2.2.1'
+s.dependency 'Alamofire'
+s.dependency 'SwiftyJSON'
 s.source_files = "TwitterJSON"
 
 end
